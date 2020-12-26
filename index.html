@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Multiple Emails input</title>
+    </head>
+    <body>
+        <div class="emails-container">
+            <h1>Share <strong>Board name</strong> with others</h1>
+            <div id="emails-input"></div>
+        </div>
+        <script src="./dist/emails-input.js"></script>
+        <script>
+            const inputNode = document.getElementById('emails-input');
+            const emailsInput = EmailsInput(inputNode);
+        </script>
+    </body>
+</html>
