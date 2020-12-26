@@ -1,5 +1,7 @@
+import './emailsInputs.scss';
+
 interface EmailsInputProps {
-    initialValue?: string[];
+    initialValues?: string[];
     placeholder?: string;
 }
 interface Email {
@@ -9,7 +11,7 @@ interface Email {
 
 enum KeyboardEventCode {
     Enter = 'Enter',
-    Comma = 'Comma',
+    Comma = ',',
 }
 
 enum EmailType {
@@ -32,6 +34,13 @@ class EmailsInput {
         this.inputPlaceholder = props.placeholder || 'add more people...';
 
         this.render();
+
+        if (props.initialValues) {
+            props.initialValues.forEach((email) => {
+                console.log(email);
+                this.add(email);
+            });
+        }
     }
 
     // Returns the current emails by valid type. Default type value is valid.
@@ -134,7 +143,9 @@ class EmailsInput {
 
         // Adds email if user input an enter key or comma key to input element
         this.inputElement.addEventListener('keyup', (event: KeyboardEvent) => {
-            if (event.code === KeyboardEventCode.Enter || event.code === KeyboardEventCode.Comma) {
+            const key = event.key || event.keyCode;
+
+            if (key === KeyboardEventCode.Enter || key === KeyboardEventCode.Comma) {
                 addEmail(this.inputElement.value);
             }
         });

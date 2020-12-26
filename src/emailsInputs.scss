@@ -1,0 +1,105 @@
+/**
+    Style is written in BEM format, to provide easy structure,
+    simple encapsulation, and easy to override with plain css.
+    I didn't include the font family and decided to use REM here
+    to make the library easily extendable and accessible
+ */
+
+$email-inputs-border-color: #c3c2cf;
+$email-inputs-border-width: 1px;
+$email-inputs-border-type: solid;
+
+$email-inputs-content-background-color: #fff;
+$email-inputs-placeholder-color: #c3c2cf;
+
+.EmailInputs {
+    * {
+        box-sizing: border-box;
+        font-size: 14px;
+        font-family: 'Open Sans', sans-serif;
+        color: #050038;
+    }
+
+    button,
+    input {
+        line-height: 1.15;
+        overflow: visible;
+        text-transform: none;
+    }
+
+    button {
+        -webkit-appearance: button;
+        cursor: pointer;
+    }
+
+    button::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+    }
+
+    button:-moz-focusring {
+        outline: 1px dotted ButtonText;
+    }
+
+    &__content {
+        display: flex;
+        flex-flow: wrap;
+        align-content: flex-start;
+        background-color: $email-inputs-content-background-color;
+        border: $email-inputs-border-width $email-inputs-border-type $email-inputs-border-color;
+        border-radius: 4px;
+        height: 96px;
+        padding: 4px 7px;
+        overflow-y: auto;
+    }
+
+    &__email {
+        display: flex;
+        align-items: center;
+        margin-right: 8px;
+        margin-top: 4px;
+        height: 24px;
+
+        &--valid {
+            background-color: rgba(102, 153, 255, 0.2);
+            padding: 0 10px;
+            border-radius: 12px;
+        }
+
+        &--invalid {
+            border-bottom: 1px dashed #d92929;
+        }
+
+        &__remove {
+            font-size: 16px;
+            background: transparent;
+            border: none;
+            margin-left: 8px;
+            padding: 0px;
+        }
+    }
+
+    &__input {
+        margin-top: 4px;
+        border: none;
+        outline: none;
+        height: 24px;
+        flex-grow: 1;
+
+        &::placeholder {
+            /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: $email-inputs-placeholder-color;
+            opacity: 1; /* Firefox */
+        }
+
+        &:-ms-input-placeholder {
+            /* Internet Explorer 10-11 */
+            color: $email-inputs-placeholder-color;
+        }
+
+        &::-ms-input-placeholder {
+            /* Microsoft Edge */
+            color: $email-inputs-placeholder-color;
+        }
+    }
+}

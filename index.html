@@ -4,16 +4,104 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Multiple Emails input</title>
+        <link rel="preload" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="dist/emails-input.css" />
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 400;
+                padding: 0;
+                margin: 0;
+                color: #050038;
+            }
+
+            h1 {
+                font-size: 20px;
+                font-weight: 400;
+                margin: 8px 0 24px 0;
+            }
+
+            .emails-form-container {
+                background-color: #f8f8f7;
+                padding: 24px 50px;
+                box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+                border-radius: 8px;
+                width: 540px;
+                margin: 50px auto;
+                overflow: hidden;
+            }
+
+            .emails-form-footer {
+                background-color: #fff;
+                margin: 24px -50px -24px -50px;
+                padding: 24px 50px 32px 50px;
+            }
+
+            .btn {
+                background: #4467f5;
+                color: white;
+                padding: 8px 16px;
+                border: none;
+                font-size: 14px;
+                line-height: 24px;
+                border-radius: 6px;
+                margin-right: 16px;
+            }
+        </style>
     </head>
     <body>
-        <div class="emails-container">
+        <div class="emails-form-container">
             <h1>Share <strong>Board name</strong> with others</h1>
             <div id="emails-input"></div>
+            <div class="emails-form-footer">
+                <button class="btn" id="add-random-email">Add email</button>
+                <button class="btn" id="show-emails-count">Get emails count</button>
+            </div>
         </div>
         <script src="./dist/emails-input.js"></script>
         <script>
-            const inputNode = document.getElementById('emails-input');
-            const emailsInput = EmailsInput(inputNode);
+            var inputNode = document.getElementById('emails-input');
+
+            var emailsInput = EmailsInput(inputNode, {
+                initialValues: ['john@miro.com', 'invalid.mail', 'mike@miro.com', 'alexander@miro.com'],
+            });
+
+            var emailsCountButton = document.getElementById('show-emails-count');
+
+            emailsCountButton.addEventListener('click', function (e) {
+                console.log(emailsInput.getEmails());
+                alert('Number of valid Emails: ' + emailsInput.getEmails('valid').length);
+            });
+
+            var randomNameList = [
+                'eray',
+                'alla',
+                'brian',
+                'adam',
+                'chris',
+                'thomas',
+                'irina',
+                'andrew',
+                'merry',
+                'anastasia',
+                'nadia',
+                'alice',
+            ];
+
+            var addRandomEmailButton = document.getElementById('add-random-email');
+
+            addRandomEmailButton.addEventListener('click', function (e) {
+                var randomIndex = Math.floor(Math.random() * randomNameList.length);
+                var name = randomNameList.splice(randomIndex, 1);
+
+                randomNameList.s;
+                emailsInput.add(name + '@miro.com');
+            });
         </script>
     </body>
 </html>

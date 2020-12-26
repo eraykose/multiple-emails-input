@@ -1,14 +1,27 @@
 {
-  "name": "multiple-emails-input",
+  "name": "multiple-email-input",
   "version": "1.0.0",
-  "description": "A JavaScript component to convert any form input element into a multiple emails input",
-  "main": "dist/emails-input.js",
+  "main": "index.js",
   "license": "MIT",
+  "browserslist": [
+    "defaults",
+    "IE 11"
+  ],
   "scripts": {
-    "build": "webpack --env development",
-    "start": "webpack serve"
+    "build": "webpack",
+    "start": "webpack serve --env development"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "autoprefixer": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.0.1",
+    "mini-css-extract-plugin": "^1.3.3",
+    "node-sass": "^5.0.0",
+    "postcss": "^8.2.1",
+    "postcss-loader": "^4.1.0",
+    "sass-loader": "^10.1.0",
     "ts-loader": "^8.0.12",
     "typescript": "^4.1.3",
     "webpack": "^5.11.0",

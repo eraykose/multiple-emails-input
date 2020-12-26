@@ -1,8 +1,9 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = (env) => ({
     // Bundling mode
-    mode: env.development ? 'development' : 'production',
+    mode: env && env.development ? 'development' : 'production',
 
     // Entry files
     entry: './src/index.ts',
@@ -32,6 +33,21 @@ module.exports = (env) => ({
     // Loaders
     module: {
         rules: [
+            // CSS loaders
+            {
+                test: /\.(scss|css)$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
+            },
+            {
+                test: /\.tsx?/,
+                exclude: /(node_modules)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env'],
+                    },
+                },
+            },
             // TypeScript loader
             {
                 test: /\.tsx?/,
@@ -40,4 +56,7 @@ module.exports = (env) => ({
             },
         ],
     },
+
+    //Plugins
+    plugins: [new MiniCssExtractPlugin({ filename: 'emails-input.css' })],
 });
