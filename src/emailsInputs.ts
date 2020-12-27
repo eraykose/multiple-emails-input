@@ -1,5 +1,3 @@
-import './emailsInputs.scss';
-
 interface EmailsInputProps {
     initialValues?: string[];
     placeholder?: string;
@@ -75,6 +73,8 @@ class EmailsInput {
             .split(',')
             .forEach((email) => {
                 if (email.length > 0 && !this.emails.some((item) => item.value === email)) {
+                    email = email.trim();
+
                     const isEmailValid: Boolean = this.isValidEmail(email);
                     const emailElement: HTMLDivElement = this.renderEmailElement(email, isEmailValid);
 
@@ -105,14 +105,14 @@ class EmailsInput {
     private renderEmailElement(email: string, isValid: Boolean): HTMLDivElement {
         // Creates an empty div element for email
         const emailElement = document.createElement('div');
-        emailElement.className = `EmailInputs__email${
-            isValid ? ' EmailInputs__email--valid' : ' EmailInputs__email--invalid'
+        emailElement.className = `EmailsInput__email${
+            isValid ? ' EmailsInput__email--valid' : ' EmailsInput__email--invalid'
         }`;
 
         // Creates a remove button element for email element
         const removeEmailButton = document.createElement('button');
         removeEmailButton.innerHTML = '&times;';
-        removeEmailButton.className = 'EmailInputs__email__remove';
+        removeEmailButton.className = 'EmailsInput__email__remove';
 
         // Adds eventlistener to remove the email element
         removeEmailButton.addEventListener('click', () => this.removeEmailElement(emailElement, email));
@@ -133,7 +133,7 @@ class EmailsInput {
         this.inputElement.setAttribute('type', 'email');
         this.inputElement.setAttribute('multiple', '');
         this.inputElement.setAttribute('placeholder', this.inputPlaceholder);
-        this.inputElement.className = 'EmailInputs__input';
+        this.inputElement.className = 'EmailsInput__input';
 
         const addEmail = (email: string): void => {
             if (email.length > 0) {
@@ -175,7 +175,7 @@ class EmailsInput {
     // Renders EmailsInput component into the root element
     render() {
         this.containerElement = document.createElement('div');
-        this.containerElement.className = 'EmailInputs EmailInputs__content';
+        this.containerElement.className = 'EmailsInput EmailsInput__content';
 
         this.containerElement.appendChild(this.renderInputElement());
 
@@ -184,6 +184,6 @@ class EmailsInput {
 }
 
 // Exports the EmailsInput API to use without "new" keyword
-export default (element: HTMLDivElement, props: EmailsInputProps) => {
+export default (element: HTMLDivElement, props?: EmailsInputProps) => {
     return new EmailsInput(element, props);
 };

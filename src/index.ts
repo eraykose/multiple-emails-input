@@ -1,3 +1,4 @@
-import EmailInputs from './emailsInputs'
+import EmailInputs from './emailsInputs';
+import './emailsInputs.scss';
 
-module.exports = EmailInputs
+module.exports = EmailInputs;
