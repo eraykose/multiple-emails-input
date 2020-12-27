@@ -10,6 +10,8 @@ Features include:
 - Duplicated emails will not be added to the list.
 - Supported by `ie11` and the latest versions of `Chrome`, `Safari`, `Firefox`, `Edge`.
 
+See [eraykose.github.io/multiple-emails-input/](https://eraykose.github.io/multiple-emails-input/) for live demo.
+
 ## Buildings
 
 If you use yarn
