@@ -1,25 +1,24 @@
-/**
-    Style is written in BEM format, to provide easy structure,
-    simple encapsulation, and easy to override with plain css.
-    I didn't include the font family and decided to use REM here
-    to make the library easily extendable and accessible
- */
-
+/* Colors */
 $email-inputs-border-color: #c3c2cf;
-$email-inputs-border-width: 1px;
-$email-inputs-border-type: solid;
-
+$email-inputs-invalid-border-color: #d92929;
+$email-inputs-valid-background-color: rgba(102, 153, 255, 0.2);
 $email-inputs-content-background-color: #fff;
 $email-inputs-placeholder-color: #c3c2cf;
+$email-inputs-text-color: #050038;
+
+/* Sizes */
+$email-inputs-border-width: 1px;
+$email-inputs-block-height: 24px;
 
 .EmailInputs {
     * {
         box-sizing: border-box;
         font-size: 14px;
         font-family: 'Open Sans', sans-serif;
-        color: #050038;
+        color: $email-inputs-text-color;
     }
 
+    /* Normalize*/
     button,
     input {
         line-height: 1.15;
@@ -40,13 +39,14 @@ $email-inputs-placeholder-color: #c3c2cf;
     button:-moz-focusring {
         outline: 1px dotted ButtonText;
     }
+    /* Normalize END*/
 
     &__content {
         display: flex;
         flex-flow: wrap;
         align-content: flex-start;
         background-color: $email-inputs-content-background-color;
-        border: $email-inputs-border-width $email-inputs-border-type $email-inputs-border-color;
+        border: $email-inputs-border-width solid $email-inputs-border-color;
         border-radius: 4px;
         height: 96px;
         padding: 4px 7px;
@@ -58,16 +58,16 @@ $email-inputs-placeholder-color: #c3c2cf;
         align-items: center;
         margin-right: 8px;
         margin-top: 4px;
-        height: 24px;
+        height: $email-inputs-block-height;
 
         &--valid {
-            background-color: rgba(102, 153, 255, 0.2);
+            background-color: $email-inputs-valid-background-color;
             padding: 0 10px;
             border-radius: 12px;
         }
 
         &--invalid {
-            border-bottom: 1px dashed #d92929;
+            border-bottom: $email-inputs-border-width dashed $email-inputs-invalid-border-color;
         }
 
         &__remove {
@@ -83,8 +83,10 @@ $email-inputs-placeholder-color: #c3c2cf;
         margin-top: 4px;
         border: none;
         outline: none;
-        height: 24px;
+        height: $email-inputs-block-height;
         flex-grow: 1;
+        width: 0;
+        min-width: 120px;
 
         &::placeholder {
             /* Chrome, Firefox, Opera, Safari 10.1+ */

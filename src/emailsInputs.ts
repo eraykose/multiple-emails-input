@@ -84,6 +84,7 @@ class EmailsInput {
                     });
 
                     this.containerElement.insertBefore(emailElement, this.inputElement!);
+                    this.containerElement.scrollTop = this.containerElement.scrollHeight;
                 }
             });
     }
