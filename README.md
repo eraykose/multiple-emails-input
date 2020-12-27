@@ -1,4 +1,6 @@
 # Multiple Emails Input
+[![Build Status](https://travis-ci.com/eraykose/multiple-emails-input.svg?branch=main)](https://travis-ci.com/eraykose/multiple-emails-input)
+
 A JavaScript component to convert any form input element into a multiple emails input.
 
 Features include:
